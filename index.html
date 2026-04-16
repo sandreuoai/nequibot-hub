@@ -58,8 +58,18 @@
         .metric-target { font-size: 0.85rem; color: var(--text-secondary); }
         .metric-desc { font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem; }
 
-        .roadmap { overflow-x: auto; padding: 0 2rem 2rem; }
-        .roadmap-grid { display: grid; grid-template-columns: 150px repeat(12, minmax(120px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+        /* ROADMAP */
+        .roadmap { overflow-x: auto; padding: 0 2rem 1rem; }
+        .roadmap-grid {
+            display: grid;
+            grid-template-columns: 150px repeat(12, 160px);
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            width: max-content;
+        }
         .roadmap-header { background: var(--surface-light); padding: 0.75rem 1rem; font-weight: 600; text-align: center; font-size: 0.9rem; color: var(--text-secondary); }
         .roadmap-year { grid-column: span 4; background: #1e1e1e; padding: 0.6rem 1rem; font-weight: 700; text-align: center; font-size: 0.9rem; color: var(--primary-light); border-bottom: 2px solid var(--primary); letter-spacing: 1px; }
         .roadmap-cell { background: var(--surface); padding: 0.75rem; min-height: 120px; }
@@ -70,6 +80,19 @@
         .initiative-name { font-weight: 600; margin-bottom: 0.25rem; color: var(--text); }
         .initiative-desc { color: var(--text-secondary); font-size: 0.8rem; }
         .roadmap-cell.drag-over { background: rgba(229, 0, 125, 0.1); border: 2px dashed var(--primary); }
+
+        /* NOTAS */
+        .notes-section { margin: 2rem; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+        .notes-title { padding: 1rem 1.5rem; background: var(--surface-light); font-weight: 600; font-size: 1rem; color: var(--text); border-bottom: 1px solid var(--border); }
+        .notes-toolbar { display: flex; gap: 0.4rem; padding: 0.6rem 1rem; background: var(--surface-light); border-bottom: 1px solid var(--border); }
+        .notes-toolbar button { padding: 0.25rem 0.6rem; background: var(--surface); border: 1px solid var(--border); color: var(--text); cursor: pointer; border-radius: 4px; font-size: 0.8rem; transition: all 0.15s; min-width: 30px; }
+        .notes-toolbar button:hover { border-color: var(--primary); color: var(--primary-light); }
+        .notes-toolbar .separator { width: 1px; background: var(--border); margin: 0 0.2rem; }
+        .notes-editor { min-height: 160px; padding: 1rem 1.5rem; background: var(--surface); color: var(--text); outline: none; font-size: 0.95rem; line-height: 1.7; }
+        .notes-editor:empty:before { content: 'Escribe tus notas aquí...'; color: var(--text-secondary); pointer-events: none; }
+        .notes-editor ul, .notes-editor ol { padding-left: 1.5rem; }
+        .notes-editor b, .notes-editor strong { color: var(--primary-light); }
+
         .toast { position: fixed; bottom: 2rem; right: 2rem; background: var(--surface); border: 1px solid var(--primary); padding: 1rem 1.5rem; border-radius: 8px; display: none; z-index: 1000; animation: slideIn 0.3s; }
         .toast.show { display: block; }
         @keyframes slideIn { from { transform: translateX(100px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
@@ -172,13 +195,13 @@
         <div class="roadmap">
             <div class="roadmap-grid">
 
-                <!-- Fila de años -->
+                <!-- Años -->
                 <div class="roadmap-header"></div>
                 <div class="roadmap-year">2026</div>
                 <div class="roadmap-year">2027</div>
                 <div class="roadmap-year">2028</div>
 
-                <!-- Fila de trimestres -->
+                <!-- Trimestres -->
                 <div class="roadmap-header"></div>
                 <div class="roadmap-header">Q1</div><div class="roadmap-header">Q2</div><div class="roadmap-header">Q3</div><div class="roadmap-header">Q4</div>
                 <div class="roadmap-header">Q1</div><div class="roadmap-header">Q2</div><div class="roadmap-header">Q3</div><div class="roadmap-header">Q4</div>
@@ -246,6 +269,22 @@
 
             </div>
         </div>
+
+        <!-- NOTAS -->
+        <div class="notes-section">
+            <div class="notes-title">Notas</div>
+            <div class="notes-toolbar">
+                <button onclick="fmt('bold')" title="Negrita (Ctrl+B)"><b>B</b></button>
+                <button onclick="fmt('italic')" title="Cursiva (Ctrl+I)"><i>I</i></button>
+                <div class="separator"></div>
+                <button onclick="fmt('insertUnorderedList')" title="Bullets">• Lista</button>
+                <button onclick="fmt('insertOrderedList')" title="Numerada">1. Lista</button>
+                <div class="separator"></div>
+                <button onclick="fmt('formatBlock', 'h3')" title="Título">T</button>
+                <button onclick="fmt('removeFormat')" title="Limpiar formato">✕ Formato</button>
+            </div>
+            <div class="notes-editor" id="notes-editor" contenteditable="true"></div>
+        </div>
     </div>
 
     <div class="toast" id="toast">✓ Cambios guardados localmente</div>
@@ -282,6 +321,10 @@
             toast.classList.add('show');
             setTimeout(() => toast.classList.remove('show'), 2000);
         }
+        function fmt(cmd, val = null) {
+            document.getElementById('notes-editor').focus();
+            document.execCommand(cmd, false, val);
+        }
         document.addEventListener('input', () => {
             localStorage.setItem('nequibot-data', document.documentElement.outerHTML);
             showToast();
@@ -290,28 +333,17 @@
         function initDragAndDrop() {
             const initiatives = document.querySelectorAll('.initiative');
             const cells = document.querySelectorAll('.roadmap-cell');
-
             initiatives.forEach(init => {
                 init.setAttribute('draggable', 'true');
                 init.addEventListener('dragstart', (e) => {
                     init.classList.add('dragging');
                     e.dataTransfer.effectAllowed = 'move';
-                    e.dataTransfer.setData('text/plain', init.innerHTML);
                 });
-                init.addEventListener('dragend', () => {
-                    init.classList.remove('dragging');
-                });
+                init.addEventListener('dragend', () => init.classList.remove('dragging'));
             });
-
             cells.forEach(cell => {
-                cell.addEventListener('dragover', (e) => {
-                    e.preventDefault();
-                    e.dataTransfer.dropEffect = 'move';
-                    cell.classList.add('drag-over');
-                });
-                cell.addEventListener('dragleave', () => {
-                    cell.classList.remove('drag-over');
-                });
+                cell.addEventListener('dragover', (e) => { e.preventDefault(); cell.classList.add('drag-over'); });
+                cell.addEventListener('dragleave', () => cell.classList.remove('drag-over'));
                 cell.addEventListener('drop', (e) => {
                     e.preventDefault();
                     cell.classList.remove('drag-over');
