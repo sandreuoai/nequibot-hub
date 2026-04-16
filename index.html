@@ -58,11 +58,11 @@
         .metric-target { font-size: 0.85rem; color: var(--text-secondary); }
         .metric-desc { font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem; }
 
-        .roadmap { overflow-x: auto; margin-bottom: 2rem; }
-        .roadmap-grid { display: grid; grid-template-columns: 150px repeat(20, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; min-width: 1600px; }
+        .roadmap { overflow-x: auto; padding: 0 2rem 2rem; }
+        .roadmap-grid { display: grid; grid-template-columns: 150px repeat(16, minmax(110px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
         .roadmap-header { background: var(--surface-light); padding: 1rem; font-weight: 600; text-align: center; font-size: 0.9rem; }
         .roadmap-cell { background: var(--surface); padding: 1rem; min-height: 120px; }
-        .roadmap-label { background: var(--surface-light); padding: 1rem; font-weight: 600; display: flex; align-items: center; color: var(--primary-light); }
+        .roadmap-label { background: var(--surface-light); padding: 1rem; font-weight: 600; display: flex; align-items: center; color: var(--primary-light); grid-column: 1; }
         .initiative { background: var(--surface-light); border: 1px solid var(--border); border-radius: 6px; padding: 0.75rem; margin-bottom: 0.5rem; font-size: 0.85rem; cursor: move; transition: all 0.2s; }
         .initiative:hover { border-color: var(--primary); transform: scale(1.02); }
         .initiative.dragging { opacity: 0.5; }
@@ -133,7 +133,6 @@
         </div>
     </div>
 
-
     <div id="okrs" class="tab-content">
         <div class="container">
             <h2 class="section-title" contenteditable="true">OKRs del Producto</h2>
@@ -168,91 +167,90 @@
         </div>
     </div>
 
-<div id="roadmap" class="tab-content">
-    <div class="roadmap">
-        <div class="roadmap-grid">
-            <div class="roadmap-header"></div>
-            <div class="roadmap-header">Q1</div><div class="roadmap-header">Q2</div><div class="roadmap-header">Q3</div><div class="roadmap-header">Q4</div>
-            <div class="roadmap-header">Q1</div><div class="roadmap-header">Q2</div><div class="roadmap-header">Q3</div><div class="roadmap-header">Q4</div>
-            <div class="roadmap-header">Q1</div><div class="roadmap-header">Q2</div><div class="roadmap-header">Q3</div><div class="roadmap-header">Q4</div>
-            <div class="roadmap-header">Q1</div><div class="roadmap-header">Q2</div><div class="roadmap-header">Q3</div><div class="roadmap-header">Q4</div>
+    <div id="roadmap" class="tab-content">
+        <div class="roadmap">
+            <div class="roadmap-grid">
+                <div class="roadmap-header"></div>
+                <div class="roadmap-header">Q1</div><div class="roadmap-header">Q2</div><div class="roadmap-header">Q3</div><div class="roadmap-header">Q4</div>
+                <div class="roadmap-header">Q1</div><div class="roadmap-header">Q2</div><div class="roadmap-header">Q3</div><div class="roadmap-header">Q4</div>
+                <div class="roadmap-header">Q1</div><div class="roadmap-header">Q2</div><div class="roadmap-header">Q3</div><div class="roadmap-header">Q4</div>
+                <div class="roadmap-header">Q1</div><div class="roadmap-header">Q2</div><div class="roadmap-header">Q3</div><div class="roadmap-header">Q4</div>
 
-            <div class="roadmap-label">Frontend / UX</div>
-            <div class="roadmap-cell"><div class="initiative"><div class="initiative-name" contenteditable="true">Interfaz chat multicanal</div><div class="initiative-desc" contenteditable="true">Burbujas, typing indicator, scroll inteligente</div></div></div>
-            <div class="roadmap-cell"><div class="initiative"><div class="initiative-name" contenteditable="true">Audios en WhatsApp</div><div class="initiative-desc" contenteditable="true">Recepción y transcripción de notas de voz</div></div></div>
-            <div class="roadmap-cell"><div class="initiative"><div class="initiative-name" contenteditable="true">Botones + LLM</div><div class="initiative-desc" contenteditable="true">Experiencia híbrida estructurada y conversacional</div></div></div>
-            <div class="roadmap-cell"></div>
-            <div class="roadmap-cell"><div class="initiative"><div class="initiative-name" contenteditable="true">Agent Studio</div><div class="initiative-desc" contenteditable="true">Builder no-code para equipos</div></div></div>
-            <div class="roadmap-cell"></div>
-            <div class="roadmap-cell"><div class="initiative"><div class="initiative-name" contenteditable="true">Modal de pruebas</div><div class="initiative-desc" contenteditable="true">Testing por canal en DEV/QC</div></div></div>
-            <div class="roadmap-cell"></div>
-            <div class="roadmap-cell"><div class="initiative"><div class="initiative-name" contenteditable="true">Dashboard métricas</div><div class="initiative-desc" contenteditable="true">CSAT, latencia, escalaciones en tiempo real</div></div></div>
-            <div class="roadmap-cell"></div>
-            <div class="roadmap-cell"></div>
-            <div class="roadmap-cell"></div>
-            <div class="roadmap-cell"></div>
-            <div class="roadmap-cell"></div>
-            <div class="roadmap-cell"></div>
-            <div class="roadmap-cell"></div>
+                <div class="roadmap-label">Frontend / UX</div>
+                <div class="roadmap-cell"><div class="initiative"><div class="initiative-name" contenteditable="true">Interfaz chat multicanal</div><div class="initiative-desc" contenteditable="true">Burbujas, typing indicator, scroll inteligente</div></div></div>
+                <div class="roadmap-cell"><div class="initiative"><div class="initiative-name" contenteditable="true">Audios en WhatsApp</div><div class="initiative-desc" contenteditable="true">Recepción y transcripción de notas de voz</div></div></div>
+                <div class="roadmap-cell"><div class="initiative"><div class="initiative-name" contenteditable="true">Botones + LLM</div><div class="initiative-desc" contenteditable="true">Experiencia híbrida estructurada y conversacional</div></div></div>
+                <div class="roadmap-cell"></div>
+                <div class="roadmap-cell"><div class="initiative"><div class="initiative-name" contenteditable="true">Agent Studio</div><div class="initiative-desc" contenteditable="true">Builder no-code para equipos</div></div></div>
+                <div class="roadmap-cell"></div>
+                <div class="roadmap-cell"><div class="initiative"><div class="initiative-name" contenteditable="true">Modal de pruebas</div><div class="initiative-desc" contenteditable="true">Testing por canal en DEV/QC</div></div></div>
+                <div class="roadmap-cell"></div>
+                <div class="roadmap-cell"><div class="initiative"><div class="initiative-name" contenteditable="true">Dashboard métricas</div><div class="initiative-desc" contenteditable="true">CSAT, latencia, escalaciones en tiempo real</div></div></div>
+                <div class="roadmap-cell"></div>
+                <div class="roadmap-cell"></div>
+                <div class="roadmap-cell"></div>
+                <div class="roadmap-cell"></div>
+                <div class="roadmap-cell"></div>
+                <div class="roadmap-cell"></div>
+                <div class="roadmap-cell"></div>
 
-            <div class="roadmap-label">Backend / API</div>
-            <div class="roadmap-cell"><div class="initiative"><div class="initiative-name" contenteditable="true">WhatsApp Business API</div><div class="initiative-desc" contenteditable="true">Integración canal principal</div></div></div>
-            <div class="roadmap-cell"><div class="initiative"><div class="initiative-name" contenteditable="true">Sesiones multi-turno</div><div class="initiative-desc" contenteditable="true">Contexto persistente entre agentes</div></div></div>
-            <div class="roadmap-cell"><div class="initiative"><div class="initiative-name" contenteditable="true">Agente Router</div><div class="initiative-desc" contenteditable="true">Orquestador del sistema multiagente</div></div></div>
-            <div class="roadmap-cell"><div class="initiative"><div class="initiative-name" contenteditable="true">Tools reusables</div><div class="initiative-desc" contenteditable="true">API 360, Zendesk, transferencia</div></div></div>
-            <div class="roadmap-cell"><div class="initiative"><div class="initiative-name" contenteditable="true">Identificación usuario</div><div class="initiative-desc" contenteditable="true">Autenticación por canal</div></div></div>
-            <div class="roadmap-cell"><div class="initiative"><div class="initiative-name" contenteditable="true">Knowledge base RAG</div><div class="initiative-desc" contenteditable="true">Repositorio por agente</div></div></div>
-            <div class="roadmap-cell"><div class="initiative"><div class="initiative-name" contenteditable="true">Canal App + Web</div><div class="initiative-desc" contenteditable="true">Ampliar más allá de WhatsApp</div></div></div>
-            <div class="roadmap-cell"></div>
-            <div class="roadmap-cell"><div class="initiative"><div class="initiative-name" contenteditable="true">Versionamiento</div><div class="initiative-desc" contenteditable="true">Historial y rollback</div></div></div>
-            <div class="roadmap-cell"></div>
-            <div class="roadmap-cell"></div>
-            <div class="roadmap-cell"></div>
-            <div class="roadmap-cell"></div>
-            <div class="roadmap-cell"></div>
-            <div class="roadmap-cell"></div>
-            <div class="roadmap-cell"></div>
+                <div class="roadmap-label">Backend / API</div>
+                <div class="roadmap-cell"><div class="initiative"><div class="initiative-name" contenteditable="true">WhatsApp Business API</div><div class="initiative-desc" contenteditable="true">Integración canal principal</div></div></div>
+                <div class="roadmap-cell"><div class="initiative"><div class="initiative-name" contenteditable="true">Sesiones multi-turno</div><div class="initiative-desc" contenteditable="true">Contexto persistente entre agentes</div></div></div>
+                <div class="roadmap-cell"><div class="initiative"><div class="initiative-name" contenteditable="true">Agente Router</div><div class="initiative-desc" contenteditable="true">Orquestador del sistema multiagente</div></div></div>
+                <div class="roadmap-cell"><div class="initiative"><div class="initiative-name" contenteditable="true">Tools reusables</div><div class="initiative-desc" contenteditable="true">API 360, Zendesk, transferencia</div></div></div>
+                <div class="roadmap-cell"><div class="initiative"><div class="initiative-name" contenteditable="true">Identificación usuario</div><div class="initiative-desc" contenteditable="true">Autenticación por canal</div></div></div>
+                <div class="roadmap-cell"><div class="initiative"><div class="initiative-name" contenteditable="true">Knowledge base RAG</div><div class="initiative-desc" contenteditable="true">Repositorio por agente</div></div></div>
+                <div class="roadmap-cell"><div class="initiative"><div class="initiative-name" contenteditable="true">Canal App + Web</div><div class="initiative-desc" contenteditable="true">Ampliar más allá de WhatsApp</div></div></div>
+                <div class="roadmap-cell"></div>
+                <div class="roadmap-cell"><div class="initiative"><div class="initiative-name" contenteditable="true">Versionamiento</div><div class="initiative-desc" contenteditable="true">Historial y rollback</div></div></div>
+                <div class="roadmap-cell"></div>
+                <div class="roadmap-cell"></div>
+                <div class="roadmap-cell"></div>
+                <div class="roadmap-cell"></div>
+                <div class="roadmap-cell"></div>
+                <div class="roadmap-cell"></div>
+                <div class="roadmap-cell"></div>
 
-            <div class="roadmap-label">IA / Modelos</div>
-            <div class="roadmap-cell"><div class="initiative"><div class="initiative-name" contenteditable="true">Motor LLM en AWS</div><div class="initiative-desc" contenteditable="true">Cerebro de todos los agentes</div></div></div>
-            <div class="roadmap-cell"><div class="initiative"><div class="initiative-name" contenteditable="true">Speech-to-Text</div><div class="initiative-desc" contenteditable="true">Transcripción de audios</div></div></div>
-            <div class="roadmap-cell"></div>
-            <div class="roadmap-cell"><div class="initiative"><div class="initiative-name" contenteditable="true">Selección de modelo</div><div class="initiative-desc" contenteditable="true">Cada equipo elige su LLM</div></div></div>
-            <div class="roadmap-cell"></div>
-            <div class="roadmap-cell"></div>
-            <div class="roadmap-cell"><div class="initiative"><div class="initiative-name" contenteditable="true">LLM-as-Judge</div><div class="initiative-desc" contenteditable="true">Monitoreo continuo de calidad</div></div></div>
-            <div class="roadmap-cell"></div>
-            <div class="roadmap-cell"></div>
-            <div class="roadmap-cell"></div>
-            <div class="roadmap-cell"></div>
-            <div class="roadmap-cell"></div>
-            <div class="roadmap-cell"></div>
-            <div class="roadmap-cell"></div>
-            <div class="roadmap-cell"></div>
-            <div class="roadmap-cell"></div>
+                <div class="roadmap-label">IA / Modelos</div>
+                <div class="roadmap-cell"><div class="initiative"><div class="initiative-name" contenteditable="true">Motor LLM en AWS</div><div class="initiative-desc" contenteditable="true">Cerebro de todos los agentes</div></div></div>
+                <div class="roadmap-cell"><div class="initiative"><div class="initiative-name" contenteditable="true">Speech-to-Text</div><div class="initiative-desc" contenteditable="true">Transcripción de audios</div></div></div>
+                <div class="roadmap-cell"></div>
+                <div class="roadmap-cell"><div class="initiative"><div class="initiative-name" contenteditable="true">Selección de modelo</div><div class="initiative-desc" contenteditable="true">Cada equipo elige su LLM</div></div></div>
+                <div class="roadmap-cell"></div>
+                <div class="roadmap-cell"></div>
+                <div class="roadmap-cell"><div class="initiative"><div class="initiative-name" contenteditable="true">LLM-as-Judge</div><div class="initiative-desc" contenteditable="true">Monitoreo continuo de calidad</div></div></div>
+                <div class="roadmap-cell"></div>
+                <div class="roadmap-cell"></div>
+                <div class="roadmap-cell"></div>
+                <div class="roadmap-cell"></div>
+                <div class="roadmap-cell"></div>
+                <div class="roadmap-cell"></div>
+                <div class="roadmap-cell"></div>
+                <div class="roadmap-cell"></div>
+                <div class="roadmap-cell"></div>
 
-            <div class="roadmap-label">Seguridad</div>
-            <div class="roadmap-cell"></div>
-            <div class="roadmap-cell"><div class="initiative"><div class="initiative-name" contenteditable="true">RBAC por equipo</div><div class="initiative-desc" contenteditable="true">Control de acceso federado</div></div></div>
-            <div class="roadmap-cell"></div>
-            <div class="roadmap-cell"></div>
-            <div class="roadmap-cell"></div>
-            <div class="roadmap-cell"><div class="initiative"><div class="initiative-name" contenteditable="true">Autenticación biométrica</div><div class="initiative-desc" contenteditable="true">Tool para flujos sensibles</div></div></div>
-            <div class="roadmap-cell"></div>
-            <div class="roadmap-cell"><div class="initiative"><div class="initiative-name" contenteditable="true">Auditoría completa</div><div class="initiative-desc" contenteditable="true">Trazabilidad SFC</div></div></div>
-            <div class="roadmap-cell"></div>
-            <div class="roadmap-cell"></div>
-            <div class="roadmap-cell"></div>
-            <div class="roadmap-cell"></div>
-            <div class="roadmap-cell"></div>
-            <div class="roadmap-cell"></div>
-            <div class="roadmap-cell"></div>
-            <div class="roadmap-cell"></div>
+                <div class="roadmap-label">Seguridad</div>
+                <div class="roadmap-cell"></div>
+                <div class="roadmap-cell"><div class="initiative"><div class="initiative-name" contenteditable="true">RBAC por equipo</div><div class="initiative-desc" contenteditable="true">Control de acceso federado</div></div></div>
+                <div class="roadmap-cell"></div>
+                <div class="roadmap-cell"></div>
+                <div class="roadmap-cell"></div>
+                <div class="roadmap-cell"><div class="initiative"><div class="initiative-name" contenteditable="true">Autenticación biométrica</div><div class="initiative-desc" contenteditable="true">Tool para flujos sensibles</div></div></div>
+                <div class="roadmap-cell"></div>
+                <div class="roadmap-cell"><div class="initiative"><div class="initiative-name" contenteditable="true">Auditoría completa</div><div class="initiative-desc" contenteditable="true">Trazabilidad SFC</div></div></div>
+                <div class="roadmap-cell"></div>
+                <div class="roadmap-cell"></div>
+                <div class="roadmap-cell"></div>
+                <div class="roadmap-cell"></div>
+                <div class="roadmap-cell"></div>
+                <div class="roadmap-cell"></div>
+                <div class="roadmap-cell"></div>
+                <div class="roadmap-cell"></div>
+            </div>
         </div>
     </div>
-</div>
 
-  
     <div class="toast" id="toast">✓ Cambios guardados localmente</div>
 
     <script>
@@ -291,30 +289,27 @@
             localStorage.setItem('nequibot-data', document.documentElement.outerHTML);
             showToast();
         });
-        window.addEventListener('load', () => {
-            const saved = localStorage.getItem('nequibot-data');
-            if (saved && confirm('¿Cargar cambios guardados anteriormente?')) {
-                document.documentElement.innerHTML = new DOMParser().parseFromString(saved, 'text/html').documentElement.innerHTML;
-            }
-            
-            // Drag & Drop
+
+        function initDragAndDrop() {
             const initiatives = document.querySelectorAll('.initiative');
             const cells = document.querySelectorAll('.roadmap-cell');
-            
+
             initiatives.forEach(init => {
                 init.setAttribute('draggable', 'true');
                 init.addEventListener('dragstart', (e) => {
                     init.classList.add('dragging');
                     e.dataTransfer.effectAllowed = 'move';
+                    e.dataTransfer.setData('text/plain', init.innerHTML);
                 });
                 init.addEventListener('dragend', () => {
                     init.classList.remove('dragging');
                 });
             });
-            
+
             cells.forEach(cell => {
                 cell.addEventListener('dragover', (e) => {
                     e.preventDefault();
+                    e.dataTransfer.dropEffect = 'move';
                     cell.classList.add('drag-over');
                 });
                 cell.addEventListener('dragleave', () => {
@@ -331,6 +326,14 @@
                     }
                 });
             });
+        }
+
+        window.addEventListener('load', () => {
+            const saved = localStorage.getItem('nequibot-data');
+            if (saved && confirm('¿Cargar cambios guardados anteriormente?')) {
+                document.documentElement.innerHTML = new DOMParser().parseFromString(saved, 'text/html').documentElement.innerHTML;
+            }
+            initDragAndDrop();
         });
     </script>
 </body>
